@@ -1,0 +1,19 @@
+.
+├── shared codes
+│   ├── README.md
+│   ├── code.ipynb
+│   ├── data
+│   │   ├── sample_submission.csv
+│   │   ├── test.csv
+│   │   ├── train.csv
+│   │   ├── ~$데이터 명세.xlsx
+│   │   └── 데이터 명세.xlsx
+│   ├── requirements.txt
+│   └── setup.sh
+├── tree.txt
+├── 다훈
+├── 유석
+├── 유진
+└── 호영
+
+7 directories, 10 files
