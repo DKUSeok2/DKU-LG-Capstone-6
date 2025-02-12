@@ -1,0 +1,32 @@
+.
+├── README.md
+├── etc
+│   ├── code.ipynb
+│   ├── requirements.txt
+│   └── setup.sh
+├── shared codes
+│   ├── cover_nan.ipynb
+│   ├── cover_nan.py
+│   └── data
+│       ├── sample_submission.csv
+│       ├── test.csv
+│       ├── train.csv
+│       ├── ~$데이터 명세.xlsx
+│       └── 데이터 명세.xlsx
+├── tree.txt
+├── 다훈
+│   ├── column_30-39.ipynb
+│   ├── experiment.ipynb
+│   ├── experiment_get_score.ipynb
+│   └── pre_func.ipynb
+├── 유석
+│   └── experiment.ipynb
+├── 유진
+│   └── experiment.ipynb
+└── 호영
+    ├── 0.71340.ipynb
+    ├── baseline_submit.csv
+    ├── begin.ipynb
+    └── experiment.ipynb
+
+8 directories, 22 files
