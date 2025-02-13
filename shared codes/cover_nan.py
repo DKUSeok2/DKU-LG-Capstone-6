@@ -20,11 +20,23 @@ def preprocessing(data):
     # '착상 전 유전 진단 사용 여부'
     data = data.drop(columns=['착상 전 유전 진단 사용 여부']) # 해당 열 삭제(PGD 검사 여부)
 
-    # '배아 생성 주요 이유' 
-    data= data.drop(columns=['배아 생성 주요 이유']) # 해당 열 삭제
-
     # '총 생성 배아 수'
     data['총 생성 배아 수'] = data['총 생성 배아 수'].fillna(0) # 0으로 채우기(결측값 6291개)
+
+    # NaN 값을 "현재 시술용"으로 변환한 후, 문자열로 변환
+    data["배아 생성 주요 이유"] = data["배아 생성 주요 이유"].fillna("현재 시술용").astype(str)
+
+    # 카테고리 변환 함수
+    def categorize_reason(value):
+        if "배아 저장용" == value:  
+            return 1
+        elif "현재 시술용" in value:  
+            return 1
+        return 0  # 그 외의 값은 0
+
+    # 변환 적용
+    data["배아 생성 주요 이유"] = data["배아 생성 주요 이유"].apply(categorize_reason)
+
     
     return data
 
