@@ -116,6 +116,7 @@ def missing_value_removal_function(df):
 
     # 유석 함수
     df = preprocess_columns_yooseok(df)
+    
     # 호영 함수
     df = cover_nan_hoyeong(df)
 
