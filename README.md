@@ -20,7 +20,9 @@ from cover_nan import missing_value_removal_function
 
 # 원본 train 데이터 로드
 train = pd.read_csv("../shared codes/data/train.csv")
+test = pd.read_csv("../shared codes/data/test.csv")
 
 # missing_value_removal_function 사용
-df = missing_value_removal_function(train)
+train = missing_value_removal_function(train)
+test = missing_value_removal_function(test)
 ```
