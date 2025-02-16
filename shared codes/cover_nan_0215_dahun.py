@@ -181,9 +181,8 @@ def missing_value_removal_function(df):
     # 불필요한 컬럼 삭제
     df = df.drop(columns=['시술 당시 나이', '정자 기증자 나이', '난자 기증자 나이', '난자 출처', '정자 출처'])
 
-    df['index'] = df.index
+    df['idx'] = df.index
 
-    print(df['index'][50:100])
 
     df_young = df[df['난자 나이 카테고리'] == '건강한 난자'].drop(columns=['난자 나이 카테고리'])
     df_middle = df[df['난자 나이 카테고리'] == '노화가 진행 중인 난자'].drop(columns=['난자 나이 카테고리'])
