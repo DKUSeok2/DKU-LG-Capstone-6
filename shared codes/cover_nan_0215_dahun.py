@@ -186,9 +186,13 @@ def missing_value_removal_function(df):
     df['idx'] = df.index
 
 
+    # df_young = df[df['난자 나이 카테고리'] == '건강한 난자'].drop(columns=['난자 나이 카테고리'])
+    # df_middle = df[df['난자 나이 카테고리'] == '노화가 진행 중인 난자'].drop(columns=['난자 나이 카테고리'])
+    # df_old = df[df['난자 나이 카테고리'] == '노화된 난자'].drop(columns=['난자 나이 카테고리'])
+    # df_unknown = df[df['난자 나이 카테고리'] == '알 수 없음'].drop(columns=['난자 나이 카테고리'])
+
     df_young = df[df['난자 나이 카테고리'] == '건강한 난자'].drop(columns=['난자 나이 카테고리'])
-    df_middle = df[df['난자 나이 카테고리'] == '노화가 진행 중인 난자'].drop(columns=['난자 나이 카테고리'])
-    df_old = df[df['난자 나이 카테고리'] == '노화된 난자'].drop(columns=['난자 나이 카테고리'])
+    df_old = df[df['난자 나이 카테고리'] == '노화가 진행 중인 난자', '노화된 난자'].drop(columns=['난자 나이 카테고리'])
     df_unknown = df[df['난자 나이 카테고리'] == '알 수 없음'].drop(columns=['난자 나이 카테고리'])
 
-    return df_young, df_middle, df_old, df_unknown
+    return df_young, df_old, df_unknown
