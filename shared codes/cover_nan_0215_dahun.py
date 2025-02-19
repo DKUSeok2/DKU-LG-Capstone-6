@@ -168,18 +168,20 @@ def missing_value_removal_function(df):
     # 호영 함수
     df = cover_nan_hoyeong_v2(df)
 
-    # bool 컬럼 만들기 & '난자 나이 카테고리' 컬럼 생성 후 이 컬럼을 기준으로 데이터프레임 쪼개기
-    binary_columns = [col for col in df.columns if df[col].dropna().isin([0, 1]).all()]
+    # # bool 컬럼 만들기 & '난자 나이 카테고리' 컬럼 생성 후 이 컬럼을 기준으로 데이터프레임 쪼개기
+    # binary_columns = [col for col in df.columns if df[col].dropna().isin([0, 1]).all()]
 
-    for col in binary_columns:
-        df[col] = df[col].astype(bool)
+    # for col in binary_columns:
+    #     df[col] = df[col].astype(bool)
 
     # 난자 나이 카테고리화 적용
     df['난자 나이 카테고리'] = df.apply(categorize_egg_age, axis=1)
 
 
     # 불필요한 컬럼 삭제
-    df = df.drop(columns=['시술 당시 나이', '정자 기증자 나이', '난자 기증자 나이', '난자 출처', '정자 출처'])
+    # df = df.drop(columns=['시술 당시 나이', '정자 기증자 나이', '난자 기증자 나이', '난자 출처', '정자 출처'])
+    df = df.drop(columns=['시술 당시 나이', '정자 기증자 나이', '난자 기증자 나이'])
+
 
     df['idx'] = df.index
 
