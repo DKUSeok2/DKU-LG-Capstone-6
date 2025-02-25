@@ -193,7 +193,25 @@ def missing_value_removal_function(df):
         df_IVF = df[df['시술 유형'] == 'IVF']
         df_DI = df[df['시술 유형'] == 'DI']
 
-        return df_IVF, df_DI   
+        DI_col = df_DI.columns
+
+        unique_1_col_DI = []
+        for col in DI_col:
+            if df_DI[col].unique().shape[0] == 1:
+                unique_1_col_DI.append(col)
+
+        df_DI = df_DI.drop(columns=unique_1_col_DI)
+
+        IVF_col = df_IVF.columns
+
+        unique_1_col_IVF = []
+        for col in IVF_col:
+            if df_IVF[col].unique().shape[0] == 1:
+                unique_1_col_IVF.append(col)
+
+        df_IVF = df_IVF.drop(columns=unique_1_col_IVF)
+
+        return df_IVF, df_DI    
 
     df_young_IVF, df_young_DI = ivf_di(df_young)
     df_middle_IVF, df_middle_DI = ivf_di(df_middle)
