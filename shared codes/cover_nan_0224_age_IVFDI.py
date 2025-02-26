@@ -181,16 +181,11 @@ def missing_value_removal_function(df):
     # # df = df.drop(columns=['시술 당시 나이', '정자 기증자 나이', '난자 기증자 나이', '난자 출처', '정자 출처'])
     df = df.drop(columns=['시술 당시 나이', '정자 기증자 나이', '난자 기증자 나이', '배아 생성 주요 이유'])
 
-    # idx 컬럼 추가
-    df['idx'] = df.index
-
     # 데이터프레임 4개로 쪼개기
     df_young = df[df['난자 나이 카테고리'] == '건강한 난자'].drop(columns=['난자 나이 카테고리'])
     df_middle = df[df['난자 나이 카테고리'] == '노화가 진행 중인 난자'].drop(columns=['난자 나이 카테고리'])
     df_old = df[df['난자 나이 카테고리'] == '노화된 난자'].drop(columns=['난자 나이 카테고리'])
     df_unknown = df[df['난자 나이 카테고리'] == '알 수 없음'].drop(columns=['난자 나이 카테고리'])
-
-
 
     def ivf_di(df):
         df_IVF = df[df['시술 유형'] == 'IVF']
@@ -221,9 +216,8 @@ def missing_value_removal_function(df):
     df_old_IVF, df_old_DI = ivf_di(df_old)
 
 
+    # df_unknown, df_0을 합병
+    df_0 = pd.concat([df_unknown, df_0])
 
 
-    return df_young_IVF, df_young_DI, df_middle_IVF, df_middle_DI, df_old_IVF, df_old_DI, df_unknown, df_0
-
-
-    # return df_young, df_old, df_unknown
+    return df_young_IVF, df_young_DI, df_middle_IVF, df_middle_DI, df_old_IVF, df_old_DI, df_0
